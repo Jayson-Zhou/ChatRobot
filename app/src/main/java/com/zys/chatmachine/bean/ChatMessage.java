@@ -1,4 +1,4 @@
-package com.zys.chatmachine;
+package com.zys.chatmachine.bean;
 
 import java.util.Date;
 
@@ -8,7 +8,16 @@ import java.util.Date;
 
 public class ChatMessage {
 
+
     private Type type;
+    private String chatMessage;
+    private Date date;
+
+    public ChatMessage(String chatMessage, Type type, Date date) {
+        this.chatMessage = chatMessage;
+        this.type = type;
+        this.date = date;
+    }
 
     public Type getType() {
         return type;
@@ -34,10 +43,7 @@ public class ChatMessage {
         this.date = date;
     }
 
-    private String chatMessage;
-    private Date date;
-
-    private enum Type{
-        OUT_CHAT_MESSAGE,MY_CHAT_MESSAGE
+    public enum Type {
+        OUT_CHAT_MESSAGE, MY_CHAT_MESSAGE
     }
 }

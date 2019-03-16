@@ -1,4 +1,4 @@
-package com.zys.chatmachine;
+package com.zys.chatmachine.bean;
 
 import java.util.List;
 
