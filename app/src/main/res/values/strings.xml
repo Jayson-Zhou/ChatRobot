@@ -1,3 +1,9 @@
 <resources>
-    <string name="app_name">ChatMachine</string>
+    <string name="app_name">ChatRobot</string>
+    <string name="robot_first">天王盖地虎</string>
+    <string name="my_first">宝塔镇河妖</string>
+    <string name="bt_send">发送</string>
+    <string name="robot_name">西单</string>
+    <string name="empty_alert">发送消息不能为空</string>
+    <string name="error">服务器繁忙，请稍后再试，请确保网络已连接！</string>
 </resources>

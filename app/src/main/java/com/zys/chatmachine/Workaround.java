@@ -2,7 +2,7 @@ package com.zys.chatmachine;
 
 /**
  * 解决设置沉浸式状态栏后，弹出的键盘覆盖输入框的问题
- * 引用自网络 2018/9/22.
+ * Created on 2018/9/22.
  */
 
 import android.app.Activity;
@@ -17,20 +17,21 @@ public class Workaround {
     public static void assistActivity(Activity activity) {
         new Workaround(activity);
     }
+
     private View mChildOfContent;
     private int usableHeightPrevious;
     private FrameLayout.LayoutParams frameLayoutParams;
     private int contentHeight;
-    private   boolean isfirst = true;
-    private   Activity activity;
-    private  int statusBarHeight;
+    private boolean isfirst = true;
+    private Activity activity;
+    private int statusBarHeight;
 
     private Workaround(Activity activity) {
         //获取状态栏的高度
         int resourceId = activity.getResources().getIdentifier("status_bar_height", "dimen", "android");
         statusBarHeight = activity.getResources().getDimensionPixelSize(resourceId);
         this.activity = activity;
-        FrameLayout content = (FrameLayout)activity.findViewById(android.R.id.content);
+        FrameLayout content = (FrameLayout) activity.findViewById(android.R.id.content);
         mChildOfContent = content.getChildAt(0);
 
         //界面出现变动都会调用这个监听事件
@@ -60,11 +61,11 @@ public class Workaround {
             int heightDifference = usableHeightSansKeyboard - usableHeightNow;
             if (heightDifference > (usableHeightSansKeyboard / 4)) {
                 // keyboard probably just became visible
-                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT){
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT) {
                     //frameLayoutParams.height = usableHeightSansKeyboard - heightDifference;
                     frameLayoutParams.height = usableHeightSansKeyboard - heightDifference + statusBarHeight;
                 } else {
-                    frameLayoutParams.height = usableHeightSansKeyboard -heightDifference;
+                    frameLayoutParams.height = usableHeightSansKeyboard - heightDifference;
                 }
             } else {
                 frameLayoutParams.height = contentHeight;
@@ -74,7 +75,11 @@ public class Workaround {
             usableHeightPrevious = usableHeightNow;
         }
     }
-    /**     * 计算mChildOfContent可见高度     ** @return     */
+
+    /**
+     * 计算mChildOfContent可见高度
+     * @return
+     */
     private int computeUsableHeight() {
         Rect r = new Rect();
         mChildOfContent.getWindowVisibleDisplayFrame(r);
