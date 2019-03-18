@@ -1,21 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+<!--同时为根布局和Toolbar设置fitsSystemWindow属性-->
+<com.zys.chatmachine.view.MyRelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:clickable="true"
+    android:fitsSystemWindows="true"
     android:focusable="true"
     android:focusableInTouchMode="true"
     tools:context="com.zys.chatmachine.MainActivity">
 
-    <!--设置fitsSystemWindows属性后会出现透明状态栏的时候，软键盘会顶掉标题栏内容-->
-    <android.support.v7.widget.Toolbar
+    <com.zys.chatmachine.view.MyToolbar
         android:id="@+id/title_toolBar"
         android:layout_width="match_parent"
         android:layout_height="?attr/actionBarSize"
         android:background="@color/title_color"
+        android:fitsSystemWindows="true"
         app:contentInsetStart="0dp">
 
         <RelativeLayout
@@ -31,7 +34,7 @@
                 android:textColor="@color/title_text_color"
                 android:textSize="20sp" />
         </RelativeLayout>
-    </android.support.v7.widget.Toolbar>
+    </com.zys.chatmachine.view.MyToolbar>
 
     <RelativeLayout
         android:id="@+id/bottom_layout"
@@ -73,4 +76,4 @@
 
     </android.support.v7.widget.RecyclerView>
 
-</RelativeLayout>
+</com.zys.chatmachine.view.MyRelativeLayout>

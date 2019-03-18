@@ -16,13 +16,11 @@ import android.widget.Toast;
 
 import com.zys.chatmachine.presenter.ChatPresenter;
 import com.zys.chatmachine.view.IChatView;
+import com.zys.chatmachine.view.MyToolbar;
 
 public class MainActivity extends HideSoftInputActivity implements IChatView {
 
     private static final String TAG = "MainActivity";
-
-    //记录版本的标志位
-    private boolean isHighVersion = false;
 
     private Toolbar toolbar;
     private Button btn_send;
@@ -44,9 +42,6 @@ public class MainActivity extends HideSoftInputActivity implements IChatView {
             //沉浸式状态栏
             getWindow().addFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS);
             Workaround.assistActivity(this);
-
-            isHighVersion = true;
-
         }
 
         //初始化控件
@@ -59,13 +54,15 @@ public class MainActivity extends HideSoftInputActivity implements IChatView {
 
     private void initAllViews() {
 
-        //初始化ToolBar
-        toolbar = (Toolbar) findViewById(R.id.title_toolBar);
+        // 初始化ToolBar
+        toolbar = (MyToolbar) findViewById(R.id.title_toolBar);
         toolbar.setTitle("");
-        if (isHighVersion) {
-            toolbar.setPadding(toolbar.getPaddingLeft(), getStatusBarHeight(this), toolbar.getPaddingRight(), toolbar.getPaddingBottom());
-        }
 
+        // 通过手动给toolbar添加paddingTop，已舍弃该方法
+        /*if (isHighVersion) {
+           toolbar.setPadding(toolbar.getPaddingLeft(), getStatusBarHeight(this), toolbar.getPaddingRight(), toolbar.getPaddingBottom());
+        }
+*/
         setSupportActionBar(toolbar);
 
 
